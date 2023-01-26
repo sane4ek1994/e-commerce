@@ -18,6 +18,10 @@ body {
   margin: 50px auto;
 }
 
+header {
+  position: relative;
+}
+
 header .logo {
   font-weight: 600;
   font-size: 20px;
@@ -61,6 +65,31 @@ header .presentation:after {
   font-size: 40px;
   font-weight: 600;
   color: #fff;
+}
+
+header .shop-cart-icon {
+  float: right;
+  cursor: pointer;
+  transition: color, transform 500ms ease;
+}
+
+header .shop-cart-icon:hover,
+header .shop-cart-icon.active {
+  color: #dc3d3d;
+  transform: scale(1.5);
+}
+
+header .shop-cart {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 450px;
+  min-height: 100px;
+  background-color: #888787;
+  z-index: 100;
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+  -moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
 }
 
 header .presentation:before {
