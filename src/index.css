@@ -84,12 +84,40 @@ header .shop-cart {
   top: 30px;
   right: 0;
   width: 450px;
-  min-height: 100px;
   background-color: #888787;
   z-index: 100;
   -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
   -moz-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
   box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+header .shop-cart .empty h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+header .shop-cart .item {
+  width: 100%;
+  float: left;
+}
+
+header .shop-cart .item img {
+  width: 70px;
+  float: left;
+  margin-right: 20px;
+}
+
+header .shop-cart .item h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+header .shop-cart .item p {
+  color: #797977;
+  font-weight: 600;
 }
 
 header .presentation:before {
