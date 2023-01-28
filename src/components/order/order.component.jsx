@@ -1,12 +1,15 @@
 import React from 'react'
+import { FaTrash } from 'react-icons/fa'
 
 export const Order = props => {
+  const { img, title, id, price, descr } = props.item
   return (
     <div className='item'>
-      <img src={`./img/${props.item.img}`} alt={props.item.title} />
-      <h2>{props.item.title}</h2>
-      <p>{props.item.descr}</p>
-      <b>{props.item.price}$</b>
+      <img src={`./img/${img}`} alt={title} />
+      <h2>{title}</h2>
+      <p>{descr}</p>
+      <b>{price}$</b>
+      <FaTrash className='delete-icon' onClick={() => props.onDelete(id)} />
     </div>
   )
 }

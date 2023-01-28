@@ -7,11 +7,14 @@ export const Header = props => {
   let [cartOpen, setCartOpen] = useState(false)
 
   const showOrders = props => {
+    let total = 0
+    props.orders.forEach(el => (total += Number.parseFloat(el.price)))
     return (
       <>
         {props.orders.map(el => (
-          <Order key={el.id} item={el} />
+          <Order onDelete={props.onDelete} key={el.id} item={el} />
         ))}
+        <p className='total-price'>Сумма: {new Intl.NumberFormat().format(total)}$</p>
       </>
     )
   }
