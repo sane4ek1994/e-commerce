@@ -6,11 +6,12 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      orders: [],
       items: [
         {
           id: 1,
           title: 'Стул серый',
-          img: 'chair-grey.jpeg',
+          img: 'chair-gray.jpg',
           descr: 'lorem lorem lorem lorem',
           categories: 'chairs',
           price: 49.9
@@ -18,7 +19,7 @@ class App extends React.Component {
         {
           id: 2,
           title: 'Стол',
-          img: 'chair-grey.jpeg',
+          img: 'table.webp',
           descr: 'lorem lorem lorem lorem',
           categories: 'chairs',
           price: 49.9
@@ -26,7 +27,7 @@ class App extends React.Component {
         {
           id: 3,
           title: 'Диван',
-          img: 'chair-grey.jpeg',
+          img: 'sofa.jpg',
           descr: 'lorem lorem lorem lorem',
           categories: 'chairs',
           price: 49.9
@@ -34,19 +35,34 @@ class App extends React.Component {
         {
           id: 4,
           title: 'Лампа',
-          img: 'chair-grey.jpeg',
+          img: 'light.webp',
           descr: 'lorem lorem lorem lorem',
           categories: 'chairs',
           price: 49.9
         }
       ]
     }
+    this.addToOrder = this.addToOrder.bind(this)
+    this.deleteOrder = this.deleteOrder.bind(this)
   }
+
+  deleteOrder(id) {
+    this.setState({ orders: this.state.orders.filter(el => el.id !== id) })
+  }
+
+  addToOrder(item) {
+    let isInArray = false
+    this.state.orders.forEach(el => {
+      if (el.id === item.id) isInArray = true
+    })
+    if (!isInArray) this.setState({ orders: [...this.state.orders, item] })
+  }
+
   render() {
     return (
       <div className='wrapper'>
-        <Header />
-        <Items items={this.state.items} />
+        <Header orders={this.state.orders} onDelete={this.deleteOrder} />
+        <Items items={this.state.items} onAdd={this.addToOrder} />
         <Footer />
       </div>
     )
