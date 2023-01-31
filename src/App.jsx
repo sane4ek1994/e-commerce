@@ -1,19 +1,21 @@
 import React from 'react'
 
 import { Header, Footer, Items } from './components'
+import { Categories } from './components/categories/categories.component'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       orders: [],
+      currentItems: [],
       items: [
         {
           id: 1,
           title: 'Стул серый',
           img: 'chair-gray.jpg',
           descr: 'lorem lorem lorem lorem',
-          categories: 'chairs',
+          category: 'chairs',
           price: 49.9
         },
         {
@@ -21,7 +23,7 @@ class App extends React.Component {
           title: 'Стол',
           img: 'table.webp',
           descr: 'lorem lorem lorem lorem',
-          categories: 'chairs',
+          category: 'table',
           price: 49.9
         },
         {
@@ -29,7 +31,7 @@ class App extends React.Component {
           title: 'Диван',
           img: 'sofa.jpg',
           descr: 'lorem lorem lorem lorem',
-          categories: 'chairs',
+          category: 'sofa',
           price: 49.9
         },
         {
@@ -37,13 +39,25 @@ class App extends React.Component {
           title: 'Лампа',
           img: 'light.webp',
           descr: 'lorem lorem lorem lorem',
-          categories: 'chairs',
+          category: 'light',
           price: 49.9
         }
       ]
     }
+    this.state.currentItems = this.state.items
     this.addToOrder = this.addToOrder.bind(this)
     this.deleteOrder = this.deleteOrder.bind(this)
+    this.chooseCategory = this.chooseCategory.bind(this)
+  }
+
+  chooseCategory(category) {
+    if (category === 'all') {
+      this.setState({ currentItems: this.state.items })
+      return
+    }
+    this.setState({
+      currentItems: this.state.items.filter(el => el.category === category)
+    })
   }
 
   deleteOrder(id) {
@@ -62,7 +76,8 @@ class App extends React.Component {
     return (
       <div className='wrapper'>
         <Header orders={this.state.orders} onDelete={this.deleteOrder} />
-        <Items items={this.state.items} onAdd={this.addToOrder} />
+        <Categories chooseCategory={this.chooseCategory} />
+        <Items items={this.state.currentItems} onAdd={this.addToOrder} />
         <Footer />
       </div>
     )
