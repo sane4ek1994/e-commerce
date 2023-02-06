@@ -169,6 +169,26 @@ header .presentation:before {
   transform: scale(1.1);
 }
 
+.full-item {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(58, 61, 63, 0.6);
+  z-index: 1000;
+  overflow: auto;
+}
+
+.full-item > div {
+  width: 600px;
+  position: relative;
+  margin: 10% auto;
+  padding: 40px 30px;
+  background-color: #fff;
+  border-radius: 9px;
+}
+
 main {
   display: flex;
   width: 100%;
@@ -185,28 +205,35 @@ main .item {
   padding-bottom: 20px;
 }
 
-main .item img {
+main .item img,
+.full-item img {
   width: 100%;
   border-radius: 10px 10px 0 0;
   transition: transform 0.5s ease;
 }
 
-main .item img:hover {
+main .item img:hover,
+.full-item img:hover {
   transform: scale(1.05);
 }
 
 main h2,
+.full-item h2,
 main p,
-main b {
+.full-item p,
+main b,
+.full-item b {
   margin: 10px 20px;
   color: #333;
 }
 
-main b {
+main b,
+.full-item b {
   color: #5fa36a;
 }
 
-main .add-to-card {
+main .add-to-card,
+.full-item .add-to-card {
   position: absolute;
   right: 20px;
   bottom: 20px;
@@ -222,7 +249,8 @@ main .add-to-card {
   transition: transform 500ms ease;
 }
 
-main .add-to-card:hover {
+main .add-to-card:hover,
+.full-item .add-to-card:hover {
   transform: scale(1.5) translateY(-5px);
 }
 
